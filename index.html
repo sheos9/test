@@ -17,45 +17,43 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>To-Do List</h1>
-            <button id="theme-toggle">🌙</button>
-        </header>
-
-        <div class="todo-container">
-            <div class="input-container">
-                <input type="text" id="task-input" placeholder="Add a new task...">
-                <button id="add-task">Add</button>
-            </div>
-            <ul id="task-list"></ul>
+        <div class="header">
+            <h1>To-Do-List</h1>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button id="addTask">Add Task</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
 
-        <div class="chatbot-container">
-            <button class="chatbot-toggle">
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <div class="monkey-face">
                 <div class="ear left"></div>
                 <div class="ear right"></div>
                 <div class="face">
                     <div class="eyes">
-                        <div class="eye left">
-                            <div class="pupil"></div>
-                        </div>
-                        <div class="eye right">
-                            <div class="pupil"></div>
-                        </div>
+                        <div class="eye"></div>
+                        <div class="eye"></div>
                     </div>
                     <div class="nose"></div>
                     <div class="mouth"></div>
                 </div>
-            </button>
-            <div class="chatbot-box">
-                <div class="chatbot-header">
-                    <h3>Chimbo Chat</h3>
-                </div>
-                <div class="chat-messages" id="chat-messages"></div>
-                <div class="chat-input-container">
-                    <input type="text" id="chat-input" placeholder="Type your message...">
-                    <button id="send-message">Send</button>
-                </div>
+            </div>
+        </button>
+
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <span>Chimbo</span>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
             </div>
         </div>
     </div>

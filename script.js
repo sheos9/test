@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
     themeToggle.addEventListener('click', () => {
@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Todo List Functionality
-    const taskInput = document.getElementById('task-input');
-    const addTaskButton = document.getElementById('add-task');
-    const taskList = document.getElementById('task-list');
+    const taskInput = document.getElementById('taskInput');
+    const addTaskButton = document.getElementById('addTask');
+    const taskList = document.getElementById('taskList');
 
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'task-item';
         li.draggable = true;
 
+        const dragHandle = document.createElement('span');
+        dragHandle.className = 'drag-handle material-icons';
+        dragHandle.textContent = 'drag_indicator';
+
         const taskText = document.createElement('span');
         taskText.className = 'task-text';
         taskText.textContent = task.text;
@@ -37,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteBtn.className = 'delete-btn';
         deleteBtn.textContent = '×';
 
+        li.appendChild(dragHandle);
         li.appendChild(taskText);
         li.appendChild(deleteBtn);
 
@@ -143,17 +148,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Chatbot Functionality
-    const chatbotToggle = document.querySelector('.chatbot-toggle');
-    const chatbotBox = document.querySelector('.chatbot-box');
-    const messageInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-message');
-    const chatMessages = document.getElementById('chat-messages');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const closeBtn = document.querySelector('.close-btn');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
 
     chatbotToggle.addEventListener('click', () => {
         chatbotBox.classList.toggle('active');
         if (chatbotBox.classList.contains('active') && chatMessages.children.length === 0) {
-            addMessage("Hi, mein Name ist Chimbo. Wie kann ich dir behilflich sein? 😊");
+            addMessage("Hi, my name is Chimbo. How can I help you? 😊");
         }
+    });
+
+    closeBtn.addEventListener('click', () => {
+        chatbotBox.classList.remove('active');
     });
 
     function addMessage(text, isUser = false) {
@@ -167,20 +177,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserMessage(text) {
         addMessage(text, true);
         
+        // Simple responses
         setTimeout(() => {
             let response;
             const lowerText = text.toLowerCase();
             
             if (lowerText.includes('chimfunshi') || lowerText.includes('was macht chimfunsi')) {
-                response = "Chimfunshi kümmert sich um hilfsbedürftige Schimpansen, die gerettet wurden, und gibt ihnen ein neues Zuhause. 😊";
+                response = "Chimfunshi takes care of rescued chimpanzees and gives them a new home. 😊";
             } else if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
-                response = "Hi, mein Name ist Chimbo. Wie kann ich dir behilflich sein? 😊";
+                response = "Hi, my name is Chimbo. How can I help you? 😊";
             } else if (lowerText.includes('help')) {
-                response = "Ich helfe dir gerne bei deinen Aufgaben! Du kannst Aufgaben hinzufügen, löschen und neu ordnen. Was möchtest du machen?";
+                response = "I can help you manage your tasks! You can add, delete, and reorder tasks in your todo list. What would you like to do?";
             } else if (lowerText.includes('thank')) {
-                response = "Gerne! Lass mich wissen, wenn du noch etwas brauchst! 🍌";
+                response = "You're welcome! Let me know if you need anything else! 🍌";
             } else {
-                response = "Ich helfe dir gerne bei deinen Aufgaben! Frag mich einfach, wenn du Hilfe brauchst. 🐒";
+                response = "I'm here to help with your tasks! Feel free to ask me anything about managing your todo list. 🐒";
             }
             
             addMessage(response);
