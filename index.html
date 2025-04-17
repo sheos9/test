@@ -9,6 +9,15 @@
     <meta name="keywords" content="todo list, task management, monkey chatbot, productivity">
     <meta name="author" content="Chimbo">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:title" content="To-Do List with Monkey Chatbot">
+    <meta property="og:description" content="A beautiful to-do list application with an interactive monkey chatbot">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chimbo.com">
+    <meta property="og:image" content="https://chimbo.com/images/preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="To-Do List with Monkey Chatbot">
+    <meta name="twitter:description" content="A beautiful to-do list application with an interactive monkey chatbot">
+    <meta name="twitter:image" content="https://chimbo.com/images/preview.jpg">
 </head>
 <body>
     <div class="container">
@@ -19,6 +28,8 @@
                     <li><a href="#tasks">Tasks</a></li>
                     <li><a href="#chat">Chat</a></li>
                     <li><a href="#settings">Settings</a></li>
+                    <li><a href="#help">Help</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
             <button id="theme-toggle">🌙</button>
@@ -36,6 +47,24 @@
                     <button class="category-btn">Work</button>
                     <button class="category-btn">Personal</button>
                     <button class="category-btn">Shopping</button>
+                    <button class="category-btn">Health</button>
+                    <button class="category-btn">Education</button>
+                    <button class="category-btn">Finance</button>
+                    <button class="category-btn">Family</button>
+                </div>
+                <div class="task-filters">
+                    <select id="priority-filter">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                    <select id="date-filter">
+                        <option value="all">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
                 </div>
                 <ul id="task-list"></ul>
             </section>
@@ -83,11 +112,21 @@
                             <option value="light">Light</option>
                             <option value="dark">Dark</option>
                             <option value="system">System</option>
+                            <option value="custom">Custom</option>
                         </select>
                     </div>
                     <div class="setting-item">
                         <label for="font-size">Font Size</label>
                         <input type="range" id="font-size" min="12" max="20" value="16">
+                    </div>
+                    <div class="setting-item">
+                        <label for="font-family">Font Family</label>
+                        <select id="font-family">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                        </select>
                     </div>
                 </div>
                 <div class="settings-group">
@@ -100,6 +139,77 @@
                         <label for="reminder-time">Reminder Time</label>
                         <input type="time" id="reminder-time">
                     </div>
+                    <div class="setting-item">
+                        <label for="notification-sound">Notification Sound</label>
+                        <select id="notification-sound">
+                            <option value="default">Default</option>
+                            <option value="bell">Bell</option>
+                            <option value="chime">Chime</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <h3>Language</h3>
+                    <div class="setting-item">
+                        <label for="language-select">Interface Language</label>
+                        <select id="language-select">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="help" class="help-container">
+                <h2>Help Center</h2>
+                <div class="help-section">
+                    <h3>Getting Started</h3>
+                    <div class="help-item">
+                        <h4>How to Add Tasks</h4>
+                        <p>To add a new task, simply type your task in the input field and click the "Add" button or press Enter.</p>
+                    </div>
+                    <div class="help-item">
+                        <h4>Managing Tasks</h4>
+                        <p>You can mark tasks as complete by clicking the checkbox, delete them using the delete button, or drag to reorder.</p>
+                    </div>
+                    <div class="help-item">
+                        <h4>Using Categories</h4>
+                        <p>Organize your tasks by clicking on the category buttons above the task list.</p>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>Chatbot Features</h3>
+                    <div class="help-item">
+                        <h4>Basic Commands</h4>
+                        <p>The chatbot understands various commands like "add task", "delete task", "show tasks", and more.</p>
+                    </div>
+                    <div class="help-item">
+                        <h4>Natural Language</h4>
+                        <p>You can talk to Chimbo naturally, and it will understand your requests about task management.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about-container">
+                <h2>About Chimbo</h2>
+                <div class="about-section">
+                    <h3>Our Story</h3>
+                    <p>Chimbo was created to make task management fun and engaging. Our friendly monkey chatbot is here to help you stay organized while bringing a smile to your face.</p>
+                </div>
+                <div class="about-section">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Intuitive task management</li>
+                        <li>Friendly AI chatbot assistance</li>
+                        <li>Customizable themes and settings</li>
+                        <li>Multiple language support</li>
+                        <li>Smart notifications</li>
+                        <li>Task categories and filters</li>
+                    </ul>
                 </div>
             </section>
         </main>
@@ -116,12 +226,32 @@
                         <li><a href="#tasks">Tasks</a></li>
                         <li><a href="#chat">Chat</a></li>
                         <li><a href="#settings">Settings</a></li>
+                        <li><a href="#help">Help</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <p>Email: support@chimbo.com</p>
                     <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Monkey Street, Jungle City, 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Chimbo. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
                 </div>
             </div>
         </footer>
