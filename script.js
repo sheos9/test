@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
+    const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
     themeToggle.addEventListener('click', () => {
@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Todo List Functionality
-    const taskInput = document.getElementById('taskInput');
-    const addTaskButton = document.getElementById('addTask');
-    const taskList = document.getElementById('taskList');
+    const taskInput = document.getElementById('task-input');
+    const addTaskButton = document.getElementById('add-task');
+    const taskList = document.getElementById('task-list');
 
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'task-item';
         li.draggable = true;
 
-        const dragHandle = document.createElement('span');
-        dragHandle.className = 'drag-handle material-icons';
-        dragHandle.textContent = 'drag_indicator';
-
         const taskText = document.createElement('span');
         taskText.className = 'task-text';
         taskText.textContent = task.text;
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteBtn.className = 'delete-btn';
         deleteBtn.textContent = '×';
 
-        li.appendChild(dragHandle);
         li.appendChild(taskText);
         li.appendChild(deleteBtn);
 
@@ -148,22 +143,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Chatbot Functionality
-    const chatbotToggle = document.getElementById('chatbotToggle');
-    const chatbotBox = document.getElementById('chatbotBox');
-    const closeBtn = document.querySelector('.close-btn');
-    const messageInput = document.getElementById('messageInput');
-    const sendButton = document.getElementById('sendMessage');
-    const chatMessages = document.getElementById('chatMessages');
+    const chatbotToggle = document.querySelector('.chatbot-toggle');
+    const chatbotBox = document.querySelector('.chatbot-box');
+    const messageInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-message');
+    const chatMessages = document.getElementById('chat-messages');
 
     chatbotToggle.addEventListener('click', () => {
         chatbotBox.classList.toggle('active');
         if (chatbotBox.classList.contains('active') && chatMessages.children.length === 0) {
             addMessage("Hi, mein Name ist Chimbo. Wie kann ich dir behilflich sein? 😊");
         }
-    });
-
-    closeBtn.addEventListener('click', () => {
-        chatbotBox.classList.remove('active');
     });
 
     function addMessage(text, isUser = false) {
@@ -177,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserMessage(text) {
         addMessage(text, true);
         
-        // Simple responses
         setTimeout(() => {
             let response;
             const lowerText = text.toLowerCase();
