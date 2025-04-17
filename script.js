@@ -184,14 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (lowerText.includes('chimfunshi') || lowerText.includes('was macht chimfunsi')) {
                 response = "Chimfunshi kümmert sich um hilfsbedürftige Schimpansen, die gerettet wurden, und gibt ihnen ein neues Zuhause. 😊";
-            } else if (lowerText.includes('hello') || lowerText.includes('hi')) {
+            } else if (lowerText.includes('hallo') || lowerText.includes('hi') || lowerText.includes('hey')) {
                 response = "Hi, mein Name ist Chimbo. Wie kann ich dir behilflich sein? 😊";
-            } else if (lowerText.includes('help')) {
-                response = "I can help you manage your tasks! You can add, delete, and reorder tasks in your todo list. What would you like to do?";
-            } else if (lowerText.includes('thank')) {
-                response = "You're welcome! Let me know if you need anything else! 🍌";
+            } else if (lowerText.includes('hilfe') || lowerText.includes('help')) {
+                response = "Ich helfe dir gerne bei deinen Aufgaben! Du kannst Aufgaben hinzufügen, löschen und neu ordnen. Was möchtest du machen?";
+            } else if (lowerText.includes('danke') || lowerText.includes('thank')) {
+                response = "Gerne! Lass mich wissen, wenn du noch etwas brauchst! 🍌";
             } else {
-                response = "I'm here to help with your tasks! Feel free to ask me anything about managing your todo list. 🐒";
+                response = "Ich helfe dir gerne bei deinen Aufgaben! Frag mich einfach, wenn du Hilfe brauchst. 🐒";
             }
             
             addMessage(response);
